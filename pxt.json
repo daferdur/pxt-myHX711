@@ -1,0 +1,16 @@
+{
+    "name": "pxt-HX711",
+    "version": "0.0.1",
+    "description": "",
+    "dependencies": {
+        "core": "*"
+    },
+    "files": [
+        "README.md",
+        "HX711.ts"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "public": true
+}
