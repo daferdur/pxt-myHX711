@@ -208,7 +208,7 @@ export function set_gain(gain: number) {
 	read()
 }
 
-export function shiftInSlow: number (dataPin: number, clockPin: number, bitOrder: number) {
+export function shiftInSlow(dataPin: number, clockPin: number, bitOrder: number): number {
     let value: number = 0
     let i: number
 
@@ -233,7 +233,7 @@ export function shiftInSlow: number (dataPin: number, clockPin: number, bitOrder
 export function read(): number {
 
 	// Wait for the chip to become ready.
-	wait_ready()
+	wait_ready(30)
 
 	// Define structures for reading data into.
 	let value:number = 0
@@ -356,7 +356,8 @@ export function get_units(times: number) {
 //% blockId="HX711_TARE" block="tare (N)"
 //% weight=80 blockGap=8
 export function tare(times: number) {
-	sum: number = read_average(times)
+	let sum: number = 0
+	sum = read_average(times)
 	set_offset(sum)
 }
 
