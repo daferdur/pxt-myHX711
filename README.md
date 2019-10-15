@@ -6,13 +6,13 @@ My codes are based on [Arduino sources - 2018 Bogdan Necula](https://github.com/
 
 To import this extension, go to Advanced -> +Extension and enter "HX711" in the search box, or copy/paste [https://github.com/daferdur/pxt-myHX711](https://github.com/daferdur/pxt-myHX711) into the search box. Press enter and click the extension.
 
-![img_0001](./HX711_module.JPG)
+![img_0001](HX711_module.JPG)
 
-![img_0002](./HX711_module2.JPG)
+![img_0002](HX711_module2.JPG)
 
-![img_0003](./HX711_module3.JPG)
+![img_0003](HX711_module3.JPG)
 
-![img_0004](./HX711_module4.JPG)
+![img_0004](HX711_module4.JPG)
 
 ## Synopsis
 
@@ -52,10 +52,6 @@ if (loadcell.wait_ready_timeout(1000)) {
     Serial.println("HX711 not found.");
 }
 ```
-
-
-## More examples
-See `examples` directory in this repository.
 
 ## Features
 1. It provides a `tare()` function, which "resets" the scale to 0. Many other
@@ -112,15 +108,6 @@ repository.
 - https://item.taobao.com/item.htm?id=544769386300
 
 
-## Similar libraries
-There are other libraries around, enjoy:
-
-- https://github.com/olkal/HX711_ADC
-- https://github.com/queuetue/Q2-HX711-Arduino-Library
-
-
----
-
 ## Appendix
 
 ### Considerations about real world effects caused by physics
@@ -139,9 +126,7 @@ See also:
 
 ## Blocks
 
-The extension can be used for HX711 modules. Use the first block to select module type and read data (it is recommended to wait between queries; at least 1 second for DHT11 and 2 seconds for DHT22), then use the second one to read either humidity level (%) or temperature (celsius).
-
-This extension also verifies checksum from sensors. If the checksum is wrong, you'll get -999 for both temperature and humidity readings, and "Last query successful?" block would return false.
+The extension can be used for HX711 modules. Use the first block to select module type and read data.
 
 ![1](https://user-images.githubusercontent.com/44191076/53888212-dd92ce00-405e-11e9-9947-6cbb0caf10a0.jpg)
 
