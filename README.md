@@ -36,7 +36,6 @@ loadcell.set_offset(LOADCELL_OFFSET);
 // 4. Acquire reading
 Serial.print("Weight: ");
 Serial.println(loadcell.get_units(10), 2);
-```
 
 ### Non-blocking mode
 It is also possible to define a maximum timeout to wait for the hardware
