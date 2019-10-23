@@ -131,21 +131,19 @@ basic.forever(function () {
 
 ## Sensor wiring
 
-There are two types of DHT11/DHT22s, one without PCB boards and have 4 pins; another have PCB boards, built-in pull up resistors and only 3 pins. Personally I would recommend you to use PCB versions.
+The SparkFun Load Cell Amplifier is a small breakout board for the HX711 IC that allows you to easily read load cells to measure weight. By connecting the amplifier to your microcontroller you will be able to read the changes in the resistance of the load cell and with some calibration you’ll be able to get very accurate weight measurements. This can be handy for creating your own industrial scale, process control, or simple presence detection of an object.
 
-For the PCB version it's easy: Vcc (+) to 3.3V or 5V (both works), GND (-) to GND, Data (out) to any GPIO pins you like.
+The HX711 uses a two wire interface (Clock and Data) for communication. Any microcontroller’s GPIO pins should work and numerous libraries have been written making it easy to read data from the HX711.
 
-![dht11-pinout-for-three-pin-and-four-pin-types-2](https://user-images.githubusercontent.com/44191076/53887826-0ebece80-405e-11e9-997b-a9f1b5e67a41.jpg)
+Load cells use a four wire wheatstone bridge to connect to the HX711. These are commonly colored RED, BLK, WHT, GRN, and YLW. Each color corresponds to the conventional color coding of load cells:
 
-Be noted that some PCB version sensors may have different order of pins.
+- Red (Excitation+ or VCC)
+- Black (Excitation- or GND)
+- White (Amplifier+, Signal+, or Output+)
+- Green (A-, S-, or O-)
+- Yellow (Shield)
 
-If you are using the 4-pin version, you'll need to add a resistor (in my test 220 Ω - 10 KΩ works under 3.3V; above that the sensor won't response) between Vcc and Data to pull up the voltage of the data pin. Or you can simply use the pull up option in the query block - the micro:bit has internal resistors about 12-13 KΩ.
-
-The third pin on the 4-pin sensor from the left is not used.
-
-![untitled sketch_bb](https://user-images.githubusercontent.com/44191076/53887940-40379a00-405e-11e9-9129-5bdb6262e8a3.png)
-
-If a hardware pull-up resistor already exists, use the internal pull up resistor dosen't seems to affect the results.
+The YLW pin acts as an optional input that is not hooked up to the strain gauge but is utilized to ground and shield against outside EMI (electromagnetic interference). Please keep in mind that some load cells might have slight variations in color coding.
 
 ## License
 
