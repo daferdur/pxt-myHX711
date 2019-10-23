@@ -107,22 +107,6 @@ repository.
 - https://item.taobao.com/item.htm?id=544769386300
 
 
-## Appendix
-
-### Considerations about real world effects caused by physics
-You should consider getting into the details of strain-gauge load cell
-sensors when expecting reasonable results. The range of topics is from
-sufficient and stable power supply, using the proper excitation voltage
-to the Seebeck effect and temperature compensation.
-
-See also:
-- [Overview about real world effects](https://community.hiveeyes.org/t/analog-vs-digital-signal-gain-amplifiers/380/6)
-- [Thermoelectric effect](https://en.wikipedia.org/wiki/Thermoelectric_effect) (Seebeck effect)
-- Temperature compensation: [Resource collection](https://community.hiveeyes.org/t/temperaturkompensation-fur-waage-hardware-firmware/115), [DIY research](https://community.hiveeyes.org/t/temperaturkompensation-fur-waage-notig-datensammlung/245)
-- [Power management for HX711](https://community.hiveeyes.org/t/stromversorgung-hx711/893)
-
-
-
 ## Blocks
 
 The extension can be used for HX711 modules. Use the first block to select module type and read data.
@@ -144,21 +128,8 @@ basic.forever(function () {
 })
 ```
 
-You can also choose to output data via serial port:
 
-```
-DHT11 query completed in 25848 microseconds                   
-Checksum ok                   
-Humidity: 77 %                
-Temperature: 22.01 *C         
-----------------------------------------
-DHT11 query completed in 25849 microseconds                   
-Checksum ok                   
-Humidity: 77 %                
-Temperature: 22.01 *C         
-
-
-## Sensor versions and wiring
+## Sensor wiring
 
 There are two types of DHT11/DHT22s, one without PCB boards and have 4 pins; another have PCB boards, built-in pull up resistors and only 3 pins. Personally I would recommend you to use PCB versions.
 
@@ -175,10 +146,6 @@ The third pin on the 4-pin sensor from the left is not used.
 ![untitled sketch_bb](https://user-images.githubusercontent.com/44191076/53887940-40379a00-405e-11e9-9129-5bdb6262e8a3.png)
 
 If a hardware pull-up resistor already exists, use the internal pull up resistor dosen't seems to affect the results.
-
-## Powering up issue
-
-The DHT modlue might not be responsive if you query it immediatly after powering up. In this case you'll need to manually restart micro:bit while connecting to power, or add a small delay (like **basic.pause(100)**) in "on start" block.
 
 ## License
 
