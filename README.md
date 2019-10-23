@@ -6,13 +6,13 @@ My codes are based on [Arduino sources - 2018 Bogdan Necula](https://github.com/
 
 To import this extension, go to Advanced -> +Extension and enter "HX711" in the search box, or copy/paste [https://github.com/daferdur/pxt-myHX711](https://github.com/daferdur/pxt-myHX711) into the search box. Press enter and click the extension.
 
-![img_0001](../HX711_module.JPG)
+![](HX711_module.jpg)
 
-![img_0002](../HX711_module2.JPG)
+![](HX711_module2.jpg)
 
-![img_0003](../HX711_module3.JPG)
+![](HX711_module3.jpg)
 
-![img_0004](../HX711_module4.JPG)
+![](HX711_module4.jpg)
 
 ## Synopsis
 
