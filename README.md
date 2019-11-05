@@ -111,7 +111,7 @@ repository.
 
 The extension can be used for HX711 modules.
 
-![1](basic_example.jpg.jpg)
+![1](basic_example.jpg)
 
 
 ```blocks
