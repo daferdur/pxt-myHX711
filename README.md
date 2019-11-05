@@ -109,23 +109,27 @@ repository.
 
 ## Blocks
 
-The extension can be used for HX711 modules. Use the first block to select module type and read data.
+The extension can be used for HX711 modules.
 
-![1](https://user-images.githubusercontent.com/44191076/53888212-dd92ce00-405e-11e9-9947-6cbb0caf10a0.jpg)
+![1](basic_example.jpg.jpg)
 
-![microbit-screenshot](https://user-images.githubusercontent.com/44191076/55158571-3a832f00-519a-11e9-9633-581dabd109ea.png)
 
 ```blocks
+HX711.SetPIN_DOUT(PIN_DOUT.P6)
+HX711.SetPIN_SCK(PIN_SCK.P7)
+HX711.begin()
+serial.redirect(
+    SerialPin.USB_TX,
+    SerialPin.USB_RX,
+    BaudRate.BaudRate9600
+)
 basic.forever(function () {
-    DHT11_DHT22.queryData(
-    DHTtype.DHT11,
-    DigitalPin.P0,
-    true,
-    false,
-    true
-    )
-    basic.showString("T: " + DHT11_DHT22.readData(dataType.temperature) + " *C")
+    serial.writeString("HX711 reading: ")
+    serial.writeNumber(HX711.get_scale())
+    serial.writeLine("")
+    basic.pause(1000)
 })
+
 ```
 
 
