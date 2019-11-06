@@ -4,7 +4,7 @@
 
 My codes are based on [Arduino sources - 2018 Bogdan Necula](https://github.com/bogde/HX711) Translated from Arduino C to Makecode.
 
-To import this extension, go to Advanced -> +Extension and enter "HX711" in the search box, or copy/paste [https://github.com/daferdur/pxt-myHX711](https://github.com/daferdur/pxt-myHX711) into the search box. Press enter and click the extension.
+To import this extension, go to Advanced -> +Extension and enter "myHX711" in the search box, or copy/paste [https://github.com/daferdur/pxt-myHX711](https://github.com/daferdur/pxt-myHX711) into the search box. Press enter and click the extension.
 
 ![](HX711_module.jpg)
 
@@ -21,34 +21,29 @@ The library is usually used in blocking mode, i.e. it will wait for the
 hardware becoming available before returning a reading.
 
 // 1. HX711 circuit wiring
-const int LOADCELL_DOUT_PIN = 2;
-const int LOADCELL_SCK_PIN = 3;
+Select DOUT_PIN;
+Select SCK_PIN;
 
-// 2. Adjustment settings
-const long LOADCELL_OFFSET = 50682624;
-const long LOADCELL_DIVIDER = 5895655;
+// 2. Adjustment settings and Initialization of the library
+begin;
+setscale = 5895655;
+set_offset = 50682624;
 
-// 3. Initialize library
-loadcell.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
-loadcell.set_scale(LOADCELL_DIVIDER);
-loadcell.set_offset(LOADCELL_OFFSET);
-
-// 4. Acquire reading
-Serial.print("Weight: ");
-Serial.println(loadcell.get_units(10), 2);
+// 3. Acquire reading
+Serial print("Weight: ");
+Serial print line(get_units(10));
 
 ### Non-blocking mode
 It is also possible to define a maximum timeout to wait for the hardware
 to be initialized. This won't send the program into a spinlock when the
 scale is disconnected and will probably also account for hardware failures.
 ```
-// 4. Acquire reading without blocking
-if (loadcell.wait_ready_timeout(1000)) {
-    long reading = loadcell.get_units(10);
-    Serial.print("Weight: ");
-    Serial.println(reading, 2);
+// 3. Acquire reading without blocking
+if (wait_ready_timeout(1000)) {
+    Serial print("Weight: ");
+    Serial print line(get_units(10));
 } else {
-    Serial.println("HX711 not found.");
+    Serial printline("HX711 not found.");
 }
 ```
 
@@ -111,6 +106,7 @@ repository.
 
 The extension can be used for HX711 modules.
 
+BASIC EXAMPLE (get reading):
 ![1](basic_example.jpg)
 
 
