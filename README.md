@@ -1,8 +1,8 @@
 # BBC micro:bit MakeCode editor extension for HX711 connected to weight sensors
 
-[HX711](https://www.mouser.com/datasheet/2/813/hx711_english-1022875.pdf) Based on Avia Semiconductor’s patented technology, HX711 is a precision 24-bit analogto-digital converter (ADC) designed for weigh scales and industrial control applications to interface directly with a bridge sensor. 
+[HX711](https://www.mouser.com/datasheet/2/813/hx711_english-1022875.pdf) Based on Avia Semiconductor’s patented technology, HX711 is a precision 24-bit analog-to-digital converter (ADC) designed for weigh scales and industrial control applications to interface directly with a bridge sensor. 
 
-My codes are based on [Arduino sources - 2018 Bogdan Necula](https://github.com/bogde/HX711) Translated from Arduino C to Makecode.
+My codes are based on [Arduino sources - 2018 Bogdan Necula](https://github.com/bogde/HX711) Which I've translated from Arduino C to Microbit Makecode.
 
 To import this extension, go to Advanced -> +Extension and enter "myHX711" in the search box, or copy/paste [https://github.com/daferdur/pxt-myHX711](https://github.com/daferdur/pxt-myHX711) into the search box. Press enter and click the extension.
 
@@ -153,4 +153,9 @@ MIT
 
 * for PXT/microbit
 (The metadata above is needed for package search.)
+
+## TO DO
+
+* It hasn't been tested yet.
+Any errors, please report. Thanks.
 
