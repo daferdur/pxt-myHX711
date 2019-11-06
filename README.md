@@ -94,12 +94,10 @@ Thanks to Weihong Guan who started the first version of this library in 2012
 already (see [[arduino|module]Hx711 electronic scale kit](http://aguegu.net/?p=1327),
 [sources](https://github.com/aguegu/ardulibs/tree/master/hx711)), Bogdan Necula
 who took over in 2014 and last but not least all others who contributed to this
-library over the course of the last years, see also `CONTRIBUTORS.rst` in this
-repository.
+library over the course of the last years.
 
 #### See also
-- https://item.taobao.com/item.htm?id=18121631630
-- https://item.taobao.com/item.htm?id=544769386300
+- https://github.com/bogde/HX711
 
 
 ## Blocks
