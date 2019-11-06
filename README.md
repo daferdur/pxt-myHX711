@@ -127,7 +127,9 @@ basic.forever(function () {
 })
 
 ```
-FULL EXAMPLE:
+
+
+FULL EXAMPLE: (almost all commands)
 ![2](full_example.jpg)
 
 
