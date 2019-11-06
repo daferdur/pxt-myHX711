@@ -128,7 +128,7 @@ basic.forever(function () {
 
 ```
 FULL EXAMPLE:
-![1](full_example.jpg)
+![2](full_example.jpg)
 
 
 ```blocks
