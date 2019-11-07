@@ -220,7 +220,8 @@ namespace HX711 {
                 value = value + (pins.digitalReadPin(DOUT) * 2 ^ i)
             else
                 //value |= pins.digitalReadPin(DOUT) << (7 - i);
-                value = value + (pins.digitalReadPin(DOUT) * 2 ^ (7 - i))
+                //value = value + (pins.digitalReadPin(DOUT) * 2 ^ (7 - i))
+             value = value | (pins.digitalReadPin(DOUT) << (7 - i))
             pins.digitalWritePin(clockPin, 0)
             control.waitMicros(1)
         }
