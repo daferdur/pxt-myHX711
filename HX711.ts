@@ -5,13 +5,6 @@
   */
 
 
-enum dataType {
-    //% block="average"
-    average,
-    //% block="value_readed"
-    value_readed
-}
-
 enum PIN_DOUT {
     //% block="P0"
     P0,
