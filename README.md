@@ -109,8 +109,8 @@ BASIC EXAMPLE (get reading):
 
 
 ```blocks
-HX711.SetPIN_DOUT(PIN_DOUT.P6)
-HX711.SetPIN_SCK(PIN_SCK.P7)
+HX711.SetPIN_DOUT(DigitalPin.P0)
+HX711.SetPIN_SCK(DigitalPin.P8)
 HX711.begin()
 serial.redirect(
     SerialPin.USB_TX,
@@ -132,10 +132,8 @@ FULL EXAMPLE: (almost all commands)
 
 
 ```blocks
-HX711.SetPIN_DOUT(PIN_DOUT.P6)
-HX711.SetPIN_SCK(PIN_SCK.P0)
-HX711.SetPIN_DOUT(PIN_DOUT.P0)
-HX711.SetPIN_SCK(PIN_SCK.P7)
+HX711.SetPIN_DOUT(DigitalPin.P0)
+HX711.SetPIN_SCK(DigitalPin.P8)
 HX711.begin()
 serial.redirect(
 SerialPin.USB_TX,
@@ -144,6 +142,17 @@ BaudRate.BaudRate9600
 )
 serial.writeLine("HX711 Initializing Scale: ")
 serial.writeLine("Before Setting Up the Scale: ")
+serial.writeString("Read: ")
+serial.writeLine("" + HX711.read())
+serial.writeString("Read Average: ")
+serial.writeLine("" + HX711.read_average(20))
+serial.writeString("Get Value: ")
+serial.writeLine("" + HX711.get_value(5))
+serial.writeString("Get Units: ")
+serial.writeLine("" + HX711.get_units(5))
+HX711.set_scale(2280)
+HX711.tare(1)
+basic.pause(1000)
 serial.writeString("Read:")
 serial.writeLine("" + HX711.read())
 serial.writeString("Read Average:")
@@ -152,17 +161,22 @@ serial.writeString("Get Value:")
 serial.writeLine("" + HX711.get_value(5))
 serial.writeString("Get Units")
 serial.writeLine("" + HX711.get_units(5))
+serial.writeLine("")
+serial.writeLine("")
+serial.writeLine("")
+serial.writeLine("")
 serial.writeLine("Readings: ")
 basic.pause(1000)
 basic.forever(function () {
     serial.writeString("One Reading: ")
     serial.writeLine("" + HX711.get_units(1))
-    serial.writeString("Average:")
-    serial.writeLine("" + HX711.get_units(10))
+    serial.writeString("Average: ")
+    serial.writeLine("" + HX711.get_units(20))
     HX711.power_down()
     basic.pause(5000)
     HX711.power_up()
 })
+
 
 
 ```
@@ -174,15 +188,12 @@ The Load Cell Amplifier is a small breakout board for the HX711 IC that allows y
 
 The HX711 uses a two wire interface (Clock and Data) for communication. Any microcontroller’s GPIO pins should work and numerous libraries have been written making it easy to read data from the HX711.
 
-Load cells use a four wire wheatstone bridge to connect to the HX711. These are commonly colored RED, BLK, WHT, GRN, and YLW. Each color corresponds to the conventional color coding of load cells:
+Load cells use a four wire wheatstone bridge to connect to the HX711. These are commonly colored RED, BLK, WHT, GRN. Each color corresponds to the conventional color coding of load cells:
 
-- Red (Excitation+ or VCC)
-- Black (Excitation- or GND)
-- White (Amplifier+, Signal+, or Output+)
-- Green (A-, S-, or O-)
-- Yellow (Shield)
-
-The YLW pin acts as an optional input that is not hooked up to the strain gauge but is utilized to ground and shield against outside EMI (electromagnetic interference). Please keep in mind that some load cells might have slight variations in color coding.
+- Red (Excitation+)
+- Black (Excitation-)
+- White (Amplifier-)
+- Green (Amplifier+)
 
 ## License
 
