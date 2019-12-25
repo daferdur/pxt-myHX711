@@ -109,8 +109,8 @@ BASIC EXAMPLE (get reading):
 
 
 ```blocks
-HX711.SetPIN_DOUT(DigitalPin.P0)
-HX711.SetPIN_SCK(DigitalPin.P8)
+HX711.SetPIN_DOUT(DOUT.P0)
+HX711.SetPIN_SCK(PD_SCK.P8)
 HX711.begin()
 serial.redirect(
     SerialPin.USB_TX,
@@ -132,8 +132,8 @@ FULL EXAMPLE: (almost all commands)
 
 
 ```blocks
-HX711.SetPIN_DOUT(DigitalPin.P0)
-HX711.SetPIN_SCK(DigitalPin.P8)
+HX711.SetPIN_DOUT(DOUT.P0)
+HX711.SetPIN_SCK(PD_SCK.P8)
 HX711.begin()
 serial.redirect(
 SerialPin.USB_TX,
