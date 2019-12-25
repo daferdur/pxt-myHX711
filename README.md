@@ -195,6 +195,8 @@ Load cells use a four wire wheatstone bridge to connect to the HX711. These are 
 - White (Amplifier-)
 - Green (Amplifier+)
 
+If you invert White & Green wires you'll get reading with negative sign.
+
 ## License
 
 MIT
