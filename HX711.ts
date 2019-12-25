@@ -204,7 +204,7 @@ namespace HX711 {
 
     //% blockId="HX711_GET_UNITS" block="get N average reading units %times"
     //% weight=80 blockGap=8
-    export function get_units(times: number) {
+    export function get_units(times: number): string {
         let valor: number = 0
         let ceros: string = ""
         valor = get_value(times) / SCALE
