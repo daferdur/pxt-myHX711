@@ -1,9 +1,9 @@
 ; Interface tables: 0/0 (NaN%)
 ; Virtual methods: 0 / 0
-; generated code sizes (bytes): 2640 (incl. 1872 user, 694 helpers, 14 vtables, 60 lits); src size 0
-; assembly: 1960 lines; density: 33.43 bytes/stmt; (56 stmts)
-; total bytes: 217680 (89.7% of 237.0k flash with 25008 free)
-; peep hole pass: 41 instructions removed and 52 updated
+; generated code sizes (bytes): 2688 (incl. 1920 user, 694 helpers, 14 vtables, 60 lits); src size 0
+; assembly: 1992 lines; density: 32.54 bytes/stmt; (59 stmts)
+; total bytes: 217728 (89.7% of 237.0k flash with 24960 free)
+; peep hole pass: 42 instructions removed and 52 updated
 ; peep hole pass: 13 instructions removed and 0 updated
 ; peep hole pass: 0 instructions removed and 0 updated
 
@@ -12,7 +12,7 @@
     .startaddr 0x34800
     .hex 708E3B92C615A841C49866C975EE5197 ; magic number
     .hex 52D6246B98920B2D ; hex template hash
-    .hex 383674FBE8423B8E ; program hash
+    .hex FB27418CADF50C76 ; program hash
     .short 8   ; num. globals
     .short 0 ; patched with number of 64 bit words resulting from assembly
     .word _pxt_config_data
@@ -62,14 +62,22 @@ _proccall3:
     ldr r7, [r6, #0]
     str r0, [r7, #16]
     @stackempty locals
+    movs r0, #29
+    ldr r7, [r6, #0]
+    str r0, [r7, #24]
+    @stackempty locals
+    movs r0, #27
+    ldr r7, [r6, #0]
+    str r0, [r7, #20]
+    @stackempty locals
     movs r0, #1
     ldr r7, [r6, #0]
     str r0, [r7, #28]
     @stackempty locals
-    bl HX711_begin__P406
+    bl HX711_begin__P410
 _proccall4:
     @stackempty locals
-    bl HX711_read__P410
+    bl HX711_read__P414
 _proccall5:
     push {r0} ; proc-arg
     bl _conv_0
@@ -96,13 +104,13 @@ _main___P1_end:
     @stackempty args
 ; endfun
     ;
-; Function read HX711.ts:234
+; Function read HX711.ts:91
     ;
     .section code
     .balign 4
     .section code
-HX711_read__P410:
-HX711_read__P410_nochk:
+HX711_read__P414:
+HX711_read__P414_nochk:
     @stackmark func
     @stackmark args
     push {lr}
@@ -113,10 +121,10 @@ HX711_read__P410_nochk:
     push {r0} ;loc
     push {r0} ;loc
     @stackmark locals
-HX711_read__P410_locals:
+HX711_read__P414_locals:
     movs r0, #1
     push {r0} ; proc-arg
-    bl HX711_wait_ready__P411
+    bl HX711_wait_ready__P415
 _proccall6:
     add sp, #4*1 ; pop locals 1
     @stackempty locals
@@ -157,7 +165,7 @@ _proccall6:
     ldr r7, [r6, #0]
     ldr r0, [r7, #20]
     push {r0} ; proc-arg
-    bl HX711_shiftInSlow__P409
+    bl HX711_shiftInSlow__P413
 _proccall7:
     add sp, #4*3 ; pop locals 3
     push {r0} ; proc-arg
@@ -177,7 +185,7 @@ _proccall7:
     ldr r7, [r6, #0]
     ldr r0, [r7, #20]
     push {r0} ; proc-arg
-    bl HX711_shiftInSlow__P409
+    bl HX711_shiftInSlow__P413
 _proccall8:
     add sp, #4*3 ; pop locals 3
     push {r0} ; proc-arg
@@ -197,7 +205,7 @@ _proccall8:
     ldr r7, [r6, #0]
     ldr r0, [r7, #20]
     push {r0} ; proc-arg
-    bl HX711_shiftInSlow__P409
+    bl HX711_shiftInSlow__P413
 _proccall9:
     add sp, #4*3 ; pop locals 3
     push {r0} ; proc-arg
@@ -213,12 +221,12 @@ _proccall9:
     movs r0, #1
     str r0, [sp, locals@3]
     @stackempty locals
-.fortop.459:
+.fortop.463:
     ldr r0, [sp, locals@3]
     ldr r7, [r6, #0]
     ldr r1, [r7, #28]
     bl _cmp_lt
-    beq .brk.459      
+    beq .brk.463      
 .jmpz10:
     ldr r7, [r6, #0]
     ldr r0, [r7, #24]
@@ -250,14 +258,14 @@ _proccall9:
     str r7, [r6, #4]
     bl control::waitMicros
     @stackempty locals
-.cont.459:
+.cont.463:
     ldr r0, [sp, locals@3]
     movs r1, #3
     bl _numops_adds
     str r0, [sp, locals@3]
     @stackempty locals
-    b .fortop.459      
-.brk.459:
+    b .fortop.463      
+.brk.463:
     ldr r0, [sp, locals@1]
     push {r0} ; proc-arg
     movs r1, #5
@@ -284,6 +292,24 @@ _proccall9:
     str r0, [sp, locals@2]
     @stackempty locals
 .afterif_1_2:
+    ldr r0, [sp, locals@1]
+    push {r0} ; proc-arg
+    ldr r0, [sp, locals@1]
+    push {r0} ; proc-arg
+    movs r1, #5
+    bl _pxt_array_get
+    add sp, #4*1 ; pop locals 1
+    movs r1, #1
+    lsls r1, r1, #8
+    adds r1, #1
+    bl _numops_eors
+    push {r0} ; proc-arg
+    ldr r0, [sp, #4*1] ; estack
+    ldr r2, [sp, #4*0] ; estack
+    movs r1, #5
+    bl _pxt_array_set
+    add sp, #4*2 ; pop locals 2
+    @stackempty locals
     ldr r0, [sp, locals@2]
     push {r0} ; proc-arg
     movs r1, #49
@@ -333,23 +359,23 @@ _proccall9:
     str r0, [sp, locals@0]
     @stackempty locals
     ldr r0, [sp, locals@0]
-.ret.410:
+.ret.414:
     @stackempty locals
 .final_2_2:
     add sp, #4*4 ; pop locals 4
-HX711_read__P410_end:
+HX711_read__P414_end:
     pop {pc}
     @stackempty func
     @stackempty args
 ; endfun
     ;
-; Function shiftInSlow HX711.ts:211
+; Function shiftInSlow HX711.ts:68
     ;
     .section code
     .balign 4
     .section code
-HX711_shiftInSlow__P409:
-HX711_shiftInSlow__P409_nochk:
+HX711_shiftInSlow__P413:
+HX711_shiftInSlow__P413_nochk:
     @stackmark func
     @stackmark args
     push {lr}
@@ -358,18 +384,18 @@ HX711_shiftInSlow__P409_nochk:
     push {r0} ;loc
     push {r0} ;loc
     @stackmark locals
-HX711_shiftInSlow__P409_locals:
+HX711_shiftInSlow__P413_locals:
     movs r0, #1
     str r0, [sp, locals@0]
     @stackempty locals
     movs r0, #1
     str r0, [sp, locals@1]
     @stackempty locals
-.fortop.492:
+.fortop.500:
     ldr r0, [sp, locals@1]
     movs r1, #17
     bl _cmp_lt
-    beq .brk.492      
+    beq .brk.500      
 .jmpz12:
     ldr r0, [sp, args@1]
     push {r0} ; proc-arg
@@ -402,17 +428,16 @@ HX711_shiftInSlow__P409_locals:
     add sp, #4*1 ; pop locals 1
     bl _numops_fromInt
     push {r0} ; proc-arg
-    movs r1, #5
-    mov r7, sp
-    str r7, [r6, #4]
-    bl numops::muls
-    add sp, #4*1 ; pop locals 1
-    ldr r1, [sp, locals@1]
-    bl _numops_eors
+    ldr r0, [sp, locals@1]
     push {r0} ; proc-arg
     ldr r0, [sp, #4*1] ; estack
     ldr r1, [sp, #4*0] ; estack
-    bl _numops_adds
+    bl _numops_lsls
+    add sp, #4*2 ; pop locals 2
+    push {r0} ; proc-arg
+    ldr r0, [sp, #4*1] ; estack
+    ldr r1, [sp, #4*0] ; estack
+    bl _numops_orrs
     add sp, #4*2 ; pop locals 2
     str r0, [sp, locals@0]
     @stackempty locals
@@ -460,40 +485,45 @@ HX711_shiftInSlow__P409_locals:
     str r7, [r6, #4]
     bl control::waitMicros
     @stackempty locals
-.cont.492:
+.cont.500:
     ldr r0, [sp, locals@1]
     movs r1, #3
     bl _numops_adds
     str r0, [sp, locals@1]
     @stackempty locals
-    b .fortop.492      
-.brk.492:
+    b .fortop.500      
+.brk.500:
     ldr r0, [sp, locals@0]
-.ret.409:
+.ret.413:
     @stackempty locals
 .final_2_3:
     add sp, #4*2 ; pop locals 2
-HX711_shiftInSlow__P409_end:
+HX711_shiftInSlow__P413_end:
     pop {pc}
+.balign 4
+_ldlit_2:
+ .word _dbl0
+_ldlit_3:
+ .word _str1
     @stackempty func
     @stackempty args
 ; endfun
     ;
-; Function wait_ready HX711.ts:292
+; Function wait_ready HX711.ts:150
     ;
     .section code
     .balign 4
     .section code
-HX711_wait_ready__P411:
-HX711_wait_ready__P411_nochk:
+HX711_wait_ready__P415:
+HX711_wait_ready__P415_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
     @stackmark locals
-HX711_wait_ready__P411_locals:
-.cont.523:
-    bl HX711_is_ready__P407
+HX711_wait_ready__P415_locals:
+.cont.530:
+    bl HX711_is_ready__P411
 _proccall15:
     mov r7, sp
     str r7, [r6, #4]
@@ -508,13 +538,7 @@ _proccall15:
     str r7, [r6, #4]
     bl numops::toBoolDecr
     cmp r0, #0
-    bne .jmpz14
-    b .brk.523      
-.balign 4
-_ldlit_2:
- .word _dbl0
-_ldlit_3:
- .word _str1
+    beq .brk.530      
 .jmpz14:
     ldr r0, [sp, args@0]
     push {r0} ; proc-arg
@@ -524,31 +548,31 @@ _ldlit_3:
     bl basic::pause
     add sp, #4*1 ; pop locals 1
     @stackempty locals
-    b .cont.523      
-.brk.523:
-.ret.411:
+    b .cont.530      
+.brk.530:
+.ret.415:
     @stackempty locals
     movs r0, #0
 .final_0_4:
-HX711_wait_ready__P411_end:
+HX711_wait_ready__P415_end:
     pop {pc}
     @stackempty func
     @stackempty args
 ; endfun
     ;
-; Function is_ready HX711.ts:191
+; Function is_ready HX711.ts:48
     ;
     .section code
     .balign 4
     .section code
-HX711_is_ready__P407:
-HX711_is_ready__P407_nochk:
+HX711_is_ready__P411:
+HX711_is_ready__P411_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
     @stackmark locals
-HX711_is_ready__P407_locals:
+HX711_is_ready__P411_locals:
     ldr r7, [r6, #0]
     ldr r0, [r7, #20]
     push {r0} ; proc-arg
@@ -564,59 +588,59 @@ HX711_is_ready__P407_locals:
     str r7, [r6, #4]
     bl numops::eq
     add sp, #4*1 ; pop locals 1
-.ret.407:
+.ret.411:
     @stackempty locals
 .final_0_5:
-HX711_is_ready__P407_end:
+HX711_is_ready__P411_end:
     pop {pc}
     @stackempty func
     @stackempty args
 ; endfun
     ;
-; Function begin HX711.ts:187
+; Function begin HX711.ts:44
     ;
     .section code
     .balign 4
     .section code
-HX711_begin__P406:
-HX711_begin__P406_nochk:
+HX711_begin__P410:
+HX711_begin__P410_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
     @stackmark locals
-HX711_begin__P406_locals:
+HX711_begin__P410_locals:
     movs r0, #1
     lsls r0, r0, #8
     adds r0, #1
     push {r0} ; proc-arg
-    bl HX711_set_gain__P408
+    bl HX711_set_gain__P412
 _proccall16:
     add sp, #4*1 ; pop locals 1
     @stackempty locals
-.ret.406:
+.ret.410:
     @stackempty locals
     movs r0, #0
 .final_0_6:
-HX711_begin__P406_end:
+HX711_begin__P410_end:
     pop {pc}
     @stackempty func
     @stackempty args
 ; endfun
     ;
-; Function set_gain HX711.ts:195
+; Function set_gain HX711.ts:52
     ;
     .section code
     .balign 4
     .section code
-HX711_set_gain__P408:
-HX711_set_gain__P408_nochk:
+HX711_set_gain__P412:
+HX711_set_gain__P412_nochk:
     @stackmark func
     @stackmark args
     push {lr}
 .locals:
     @stackmark locals
-HX711_set_gain__P408_locals:
+HX711_set_gain__P412_locals:
     ldr r0, [sp, args@0]
     push {r0}; tmpstore @1
     mov r1, r0
@@ -655,25 +679,25 @@ HX711_set_gain__P408_locals:
     b .switch_2_7      
 .jmpz19:
     pop {r0} ; tmpref @1
-    b .brk.537      
+    b .brk.544      
 .switch_0_7:
     movs r0, #3
     ldr r7, [r6, #0]
     str r0, [r7, #28]
     @stackempty locals
-    b .brk.537      
+    b .brk.544      
 .switch_1_7:
     movs r0, #7
     ldr r7, [r6, #0]
     str r0, [r7, #28]
     @stackempty locals
-    b .brk.537      
+    b .brk.544      
 .switch_2_7:
     movs r0, #5
     ldr r7, [r6, #0]
     str r0, [r7, #28]
     @stackempty locals
-.brk.537:
+.brk.544:
     ldr r7, [r6, #0]
     ldr r0, [r7, #24]
     push {r0} ; proc-arg
@@ -684,14 +708,14 @@ HX711_set_gain__P408_locals:
     bl pins::digitalWritePin
     add sp, #4*1 ; pop locals 1
     @stackempty locals
-    bl HX711_read__P410
+    bl HX711_read__P414
 _proccall20:
     @stackempty locals
-.ret.408:
+.ret.412:
     @stackempty locals
     movs r0, #0
 .final_3_7:
-HX711_set_gain__P408_end:
+HX711_set_gain__P412_end:
     pop {pc}
     @stackempty func
     @stackempty args
