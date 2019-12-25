@@ -4,174 +4,38 @@
  * MIT License
   */
 
-
-enum PIN_DOUT {
-    //% block="P0"
-    P0,
-    //% block="P1"
-    P1,
-    //% block="P2"
-    P2,
-    //% block="P3"
-    P3,
-    //% block="P4"
-    P4,
-    //% block="P5"
-    P5,
-    //% block="P6"
-    P6,
-    //% block="P7"
-    P7,
-    //% block="P8"
-    P8,
-    //% block="P9"
-    P9,
-    //% block="P10"
-    P10,
-    //% block="P11"
-    P11,
-    //% block="P12"
-    P12,
-    //% block="P13"
-    P13,
-    //% block="P14"
-    P14,
-    //% block="P15"
-    P15,
-    //% block="P16"
-    P16
-}
-
-enum PIN_SCK {
-    //% block="P0"
-    P0,
-    //% block="P1"
-    P1,
-    //% block="P2"
-    P2,
-    //% block="P3"
-    P3,
-    //% block="P4"
-    P4,
-    //% block="P5"
-    P5,
-    //% block="P6"
-    P6,
-    //% block="P7"
-    P7,
-    //% block="P8"
-    P8,
-    //% block="P9"
-    P9,
-    //% block="P10"
-    P10,
-    //% block="P11"
-    P11,
-    //% block="P12"
-    P12,
-    //% block="P13"
-    P13,
-    //% block="P14"
-    P14,
-    //% block="P15"
-    P15,
-    //% block="P16"
-    P16
-}
-
-let PD_SCK: DigitalPin
-let DOUT: DigitalPin
-let GAIN: number = 0.0
-let OFFSET: number = 0;	// used for tare weight
-let SCALE: number = 1;	// used to return weight in grams, kg, ounces, whatever
-
-
-
 //% block="HX711" weight=100 color=#ff8f3f icon="\uf043"
 namespace HX711 {
+    let PD_SCK = DigitalPin.P7;
+    let DOUT = DigitalPin.P6;
+    let GAIN: number = 0.0;
+    let OFFSET: number = 0;	// used for tare weight
+    let SCALE: number = 1;	// used to return weight in grams, kg, ounces, whatever
 
     /**
       * Query data from HX711 module. 
       * It is also recommended to wait 1 or 2 seconds between each query.
       */
 
-    //% blockId="SET_PIN_DOUT" block="set DOUT %DOUT"
+    /**
+     * Set pin at which the DOUT line is connected
+     * @param pinDOUT pin at which the HX data line is connected
+     */
+
+    //% blockId="SET_DOUT" block="HX711 set DOUT %pinDOUT"
     //% weight=100 blockGap=8
-    export function SetPIN_DOUT(DOUT: PIN_DOUT): void {
-        if (DOUT == PIN_DOUT.P0)
-            DOUT = 0
-        else if (DOUT == PIN_DOUT.P1)
-            DOUT = 1
-        else if (DOUT == PIN_DOUT.P2)
-            DOUT = 2
-        else if (DOUT == PIN_DOUT.P3)
-            DOUT = 3
-        else if (DOUT == PIN_DOUT.P4)
-            DOUT = 4
-        else if (DOUT == PIN_DOUT.P5)
-            DOUT = 5
-        else if (DOUT == PIN_DOUT.P6)
-            DOUT = 6
-        else if (DOUT == PIN_DOUT.P7)
-            DOUT = 7
-        else if (DOUT == PIN_DOUT.P8)
-            DOUT = 8
-        else if (DOUT == PIN_DOUT.P9)
-            DOUT = 9
-        else if (DOUT == PIN_DOUT.P10)
-            DOUT = 10
-        else if (DOUT == PIN_DOUT.P11)
-            DOUT = 11
-        else if (DOUT == PIN_DOUT.P12)
-            DOUT = 12
-        else if (DOUT == PIN_DOUT.P13)
-            DOUT = 13
-        else if (DOUT == PIN_DOUT.P14)
-            DOUT = 14
-        else if (DOUT == PIN_DOUT.P15)
-            DOUT = 15
-        else if (DOUT == PIN_DOUT.P16)
-            DOUT = 16
+    export function SetPIN_DOUT(pinDOUT: DigitalPin): void {
+        DOUT = pinDOUT;
     }
 
-
-    //% blockId="SET_PIN_SCK" block="set PD_SCK %PD_SCK"
+    /**
+     * Set pin at which the SCK line is connected
+     * @param pinPD_SCK pin at which the HX data line is connected
+     */
+    //% blockId="SET_SCK" block="HX711 set PD_SCK %pinPD_SCK"
     //% weight=100 blockGap=8
-    export function SetPIN_SCK(PD_SCK: PIN_SCK): void {
-        if (PD_SCK == PIN_SCK.P0)
-            PD_SCK = 0
-        else if (PD_SCK == PIN_SCK.P1)
-            PD_SCK = 1
-        else if (PD_SCK == PIN_SCK.P2)
-            PD_SCK = 2
-        else if (PD_SCK == PIN_SCK.P3)
-            PD_SCK = 3
-        else if (PD_SCK == PIN_SCK.P4)
-            PD_SCK = 4
-        else if (PD_SCK == PIN_SCK.P5)
-            PD_SCK = 5
-        else if (PD_SCK == PIN_SCK.P6)
-            PD_SCK = 6
-        else if (PD_SCK == PIN_SCK.P7)
-            PD_SCK = 7
-        else if (PD_SCK == PIN_SCK.P8)
-            PD_SCK = 8
-        else if (PD_SCK == PIN_SCK.P9)
-            PD_SCK = 9
-        else if (PD_SCK == PIN_SCK.P10)
-            PD_SCK = 10
-        else if (PD_SCK == PIN_SCK.P11)
-            PD_SCK = 11
-        else if (PD_SCK == PIN_SCK.P12)
-            PD_SCK = 12
-        else if (PD_SCK == PIN_SCK.P13)
-            PD_SCK = 13
-        else if (PD_SCK == PIN_SCK.P14)
-            PD_SCK = 14
-        else if (PD_SCK == PIN_SCK.P15)
-            PD_SCK = 15
-        else if (PD_SCK == PIN_SCK.P16)
-            PD_SCK = 16
+    export function SetPIN_SCK(pinPD_SCK: DigitalPin): void {
+        PD_SCK = pinPD_SCK;
     }
 
 
@@ -209,12 +73,12 @@ namespace HX711 {
             pins.digitalWritePin(clockPin, 1)
             control.waitMicros(1)
             if (bitOrder == 0)
-                //value |= pins.digitalReadPin(DOUT) << i;
-                value = value + (pins.digitalReadPin(DOUT) * 2 ^ i)
+                value |= pins.digitalReadPin(DOUT) << i;
+            //value = value + (pins.digitalReadPin(DOUT) * 2 ^ i)
             else
-                //value |= pins.digitalReadPin(DOUT) << (7 - i);
-                //value = value + (pins.digitalReadPin(DOUT) * 2 ^ (7 - i))
-             value = value | (pins.digitalReadPin(DOUT) << (7 - i))
+                value |= pins.digitalReadPin(DOUT) << (7 - i);
+            //value = value + (pins.digitalReadPin(DOUT) * 2 ^ (7 - i))
+            //value = value | (pins.digitalReadPin(DOUT) << (7 - i))
             pins.digitalWritePin(clockPin, 0)
             control.waitMicros(1)
         }
@@ -274,9 +138,10 @@ namespace HX711 {
         } else {
             filler = 0x00
         }
+        data[2] = data[2] ^ 0x80 //shift MSB
 
         // Construct a 32-bit signed integer
-        value = ( (filler) << 24 | (data[2]) << 16 | (data[1]) << 8 | (data[0]) )
+        value = ((filler) << 24 | (data[2]) << 16 | (data[1]) << 8 | (data[0]))
         //value = ((filler * 16777216) + (data[2] * 65536) + (data[1] * 256) + (data[0]))
 
         return (value)
@@ -340,7 +205,16 @@ namespace HX711 {
     //% blockId="HX711_GET_UNITS" block="get N average reading units %times"
     //% weight=80 blockGap=8
     export function get_units(times: number) {
-        return get_value(times) / SCALE
+        let valor: number = 0
+        let ceros: string = ""
+        valor = get_value(times) / SCALE
+        
+        if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length==0){
+            ceros = "00"
+        } else if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 1){
+            ceros = "0"
+        }
+        return Math.trunc(valor) + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100))
     }
 
     //% blockId="HX711_TARE" block="tare %times"
