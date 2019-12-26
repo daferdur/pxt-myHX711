@@ -214,7 +214,7 @@ namespace HX711 {
         } else if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 1){
             ceros = "0"
         }
-        return Math.trunc(valor) + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100))
+        return (Math.trunc(valor) + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100))).toString()
     }
 
     //% blockId="HX711_TARE" block="tare %times"
