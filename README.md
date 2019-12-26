@@ -132,8 +132,11 @@ FULL EXAMPLE: (almost all commands)
 
 
 ```blocks
-HX711.SetPIN_DOUT(PIN_DOUT.P0)
-HX711.SetPIN_SCK(PIN_PD_SCK.P8)
+let valor_string = ""
+let ceros = ""
+let valor: number = 0
+HX711.SetPIN_DOUT(DigitalPin.P0)
+HX711.SetPIN_SCK(DigitalPin.P8)
 HX711.begin()
 serial.redirect(
 SerialPin.USB_TX,
@@ -169,13 +172,31 @@ serial.writeLine("Readings: ")
 basic.pause(1000)
 basic.forever(function () {
     serial.writeString("One Reading: ")
-    serial.writeLine("" + HX711.get_units(1))
+    valor = HX711.get_units(1)
+    ceros = ""
+    if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 0) {
+        ceros = "00"
+    } else if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 1) {
+        ceros = "0"
+    }
+    valor_string = "" + Math.trunc(valor) + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100))
+    serial.writeLine(valor_string)
     serial.writeString("Average: ")
-    serial.writeLine("" + HX711.get_units(20))
+    valor = HX711.get_units(20)
+    ceros = ""
+    if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 0) {
+        ceros = "00"
+    } else if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 1) {
+        ceros = "0"
+    }
+    valor_string = "" + Math.trunc(valor) + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100))
+    serial.writeLine(valor_string)
     HX711.power_down()
-    basic.pause(5000)
+    basic.pause(4000)
     HX711.power_up()
+    basic.pause(100)
 })
+
 
 
 
