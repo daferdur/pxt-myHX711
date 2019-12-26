@@ -206,15 +206,9 @@ namespace HX711 {
     //% weight=80 blockGap=8
     export function get_units(times: number): string {
         let valor: number = 0
-        let ceros: string = ""
-        valor = get_value(times) / SCALE
         
-        if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length==0){
-            ceros = "00"
-        } else if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 1){
-            ceros = "0"
-        }
-        return (Math.trunc(valor) + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100))).toString()
+        valor = get_value(times) / SCALE
+        return valor
     }
 
     //% blockId="HX711_TARE" block="tare %times"
