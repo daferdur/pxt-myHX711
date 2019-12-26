@@ -215,8 +215,7 @@ namespace HX711 {
          } else if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 1) {
             ceros = "0"
          }
-    valor_string = "" + Math.trunc(valor) + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100))
-
+    valor_string = "" + Math.trunc(valor).toString() + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString()
      
         return valor_string
     }
