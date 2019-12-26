@@ -1,8 +1,8 @@
 ; Interface tables: 0/0 (NaN%)
 ; Virtual methods: 0 / 0
-; generated code sizes (bytes): 2688 (incl. 1920 user, 694 helpers, 14 vtables, 60 lits); src size 0
-; assembly: 1992 lines; density: 32.54 bytes/stmt; (59 stmts)
-; total bytes: 217728 (89.7% of 237.0k flash with 24960 free)
+; generated code sizes (bytes): 2656 (incl. 1888 user, 694 helpers, 14 vtables, 60 lits); src size 0
+; assembly: 1976 lines; density: 32 bytes/stmt; (59 stmts)
+; total bytes: 217696 (89.7% of 237.0k flash with 24992 free)
 ; peep hole pass: 42 instructions removed and 52 updated
 ; peep hole pass: 13 instructions removed and 0 updated
 ; peep hole pass: 0 instructions removed and 0 updated
@@ -12,7 +12,7 @@
     .startaddr 0x34800
     .hex 708E3B92C615A841C49866C975EE5197 ; magic number
     .hex 52D6246B98920B2D ; hex template hash
-    .hex 368C604718C0C728 ; program hash
+    .hex 24F69AD00FF74A62 ; program hash
     .short 8   ; num. globals
     .short 0 ; patched with number of 64 bit words resulting from assembly
     .word _pxt_config_data
@@ -68,11 +68,11 @@ _proccall3:
     @stackempty locals
     movs r0, #31
     ldr r7, [r6, #0]
-    str r0, [r7, #20]
+    str r0, [r7, #28]
     @stackempty locals
     movs r0, #1
     ldr r7, [r6, #0]
-    str r0, [r7, #28]
+    str r0, [r7, #20]
     @stackempty locals
     bl HX711_begin__P410
 _proccall4:
@@ -159,15 +159,9 @@ _proccall6:
     push {r0} ; proc-arg
     movs r0, #3
     push {r0} ; proc-arg
-    ldr r7, [r6, #0]
-    ldr r0, [r7, #24]
-    push {r0} ; proc-arg
-    ldr r7, [r6, #0]
-    ldr r0, [r7, #20]
-    push {r0} ; proc-arg
     bl HX711_shiftInSlow__P413
 _proccall7:
-    add sp, #4*3 ; pop locals 3
+    add sp, #4*1 ; pop locals 1
     push {r0} ; proc-arg
     ldr r0, [sp, #4*1] ; estack
     ldr r2, [sp, #4*0] ; estack
@@ -179,15 +173,9 @@ _proccall7:
     push {r0} ; proc-arg
     movs r0, #3
     push {r0} ; proc-arg
-    ldr r7, [r6, #0]
-    ldr r0, [r7, #24]
-    push {r0} ; proc-arg
-    ldr r7, [r6, #0]
-    ldr r0, [r7, #20]
-    push {r0} ; proc-arg
     bl HX711_shiftInSlow__P413
 _proccall8:
-    add sp, #4*3 ; pop locals 3
+    add sp, #4*1 ; pop locals 1
     push {r0} ; proc-arg
     ldr r0, [sp, #4*1] ; estack
     ldr r2, [sp, #4*0] ; estack
@@ -199,15 +187,9 @@ _proccall8:
     push {r0} ; proc-arg
     movs r0, #3
     push {r0} ; proc-arg
-    ldr r7, [r6, #0]
-    ldr r0, [r7, #24]
-    push {r0} ; proc-arg
-    ldr r7, [r6, #0]
-    ldr r0, [r7, #20]
-    push {r0} ; proc-arg
     bl HX711_shiftInSlow__P413
 _proccall9:
-    add sp, #4*3 ; pop locals 3
+    add sp, #4*1 ; pop locals 1
     push {r0} ; proc-arg
     ldr r0, [sp, #4*1] ; estack
     ldr r2, [sp, #4*0] ; estack
@@ -221,12 +203,12 @@ _proccall9:
     movs r0, #1
     str r0, [sp, locals@3]
     @stackempty locals
-.fortop.463:
+.fortop.457:
     ldr r0, [sp, locals@3]
     ldr r7, [r6, #0]
-    ldr r1, [r7, #28]
+    ldr r1, [r7, #20]
     bl _cmp_lt
-    beq .brk.463      
+    beq .brk.457      
 .jmpz10:
     ldr r7, [r6, #0]
     ldr r0, [r7, #24]
@@ -258,14 +240,14 @@ _proccall9:
     str r7, [r6, #4]
     bl control::waitMicros
     @stackempty locals
-.cont.463:
+.cont.457:
     ldr r0, [sp, locals@3]
     movs r1, #3
     bl _numops_adds
     str r0, [sp, locals@3]
     @stackempty locals
-    b .fortop.463      
-.brk.463:
+    b .fortop.457      
+.brk.457:
     ldr r0, [sp, locals@1]
     push {r0} ; proc-arg
     movs r1, #5
@@ -391,13 +373,14 @@ HX711_shiftInSlow__P413_locals:
     movs r0, #1
     str r0, [sp, locals@1]
     @stackempty locals
-.fortop.500:
+.fortop.492:
     ldr r0, [sp, locals@1]
     movs r1, #17
     bl _cmp_lt
-    beq .brk.500      
+    beq .brk.492      
 .jmpz12:
-    ldr r0, [sp, args@1]
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #24]
     push {r0} ; proc-arg
     bl _conv_2
     movs r1, #1
@@ -411,7 +394,7 @@ HX711_shiftInSlow__P413_locals:
     str r7, [r6, #4]
     bl control::waitMicros
     @stackempty locals
-    ldr r0, [sp, args@2]
+    ldr r0, [sp, args@0]
     movs r1, #1
     bl _cmp_eq
     beq .else_0_3      
@@ -419,7 +402,7 @@ HX711_shiftInSlow__P413_locals:
     ldr r0, [sp, locals@0]
     push {r0} ; proc-arg
     ldr r7, [r6, #0]
-    ldr r0, [r7, #20]
+    ldr r0, [r7, #28]
     push {r0} ; proc-arg
     bl _conv_2
     mov r7, sp
@@ -446,7 +429,7 @@ HX711_shiftInSlow__P413_locals:
     ldr r0, [sp, locals@0]
     push {r0} ; proc-arg
     ldr r7, [r6, #0]
-    ldr r0, [r7, #20]
+    ldr r0, [r7, #28]
     push {r0} ; proc-arg
     bl _conv_2
     mov r7, sp
@@ -471,7 +454,8 @@ HX711_shiftInSlow__P413_locals:
     str r0, [sp, locals@0]
     @stackempty locals
 .afterif_1_3:
-    ldr r0, [sp, args@1]
+    ldr r7, [r6, #0]
+    ldr r0, [r7, #24]
     push {r0} ; proc-arg
     bl _conv_2
     movs r1, #0
@@ -485,14 +469,14 @@ HX711_shiftInSlow__P413_locals:
     str r7, [r6, #4]
     bl control::waitMicros
     @stackempty locals
-.cont.500:
+.cont.492:
     ldr r0, [sp, locals@1]
     movs r1, #3
     bl _numops_adds
     str r0, [sp, locals@1]
     @stackempty locals
-    b .fortop.500      
-.brk.500:
+    b .fortop.492      
+.brk.492:
     ldr r0, [sp, locals@0]
 .ret.413:
     @stackempty locals
@@ -522,7 +506,7 @@ HX711_wait_ready__P415_nochk:
 .locals:
     @stackmark locals
 HX711_wait_ready__P415_locals:
-.cont.530:
+.cont.522:
     bl HX711_is_ready__P411
 _proccall15:
     mov r7, sp
@@ -538,7 +522,7 @@ _proccall15:
     str r7, [r6, #4]
     bl numops::toBoolDecr
     cmp r0, #0
-    beq .brk.530      
+    beq .brk.522      
 .jmpz14:
     ldr r0, [sp, args@0]
     push {r0} ; proc-arg
@@ -548,8 +532,8 @@ _proccall15:
     bl basic::pause
     add sp, #4*1 ; pop locals 1
     @stackempty locals
-    b .cont.530      
-.brk.530:
+    b .cont.522      
+.brk.522:
 .ret.415:
     @stackempty locals
     movs r0, #0
@@ -574,7 +558,7 @@ HX711_is_ready__P411_nochk:
     @stackmark locals
 HX711_is_ready__P411_locals:
     ldr r7, [r6, #0]
-    ldr r0, [r7, #20]
+    ldr r0, [r7, #28]
     push {r0} ; proc-arg
     bl _conv_2
     mov r7, sp
@@ -679,25 +663,25 @@ HX711_set_gain__P412_locals:
     b .switch_2_7      
 .jmpz19:
     pop {r0} ; tmpref @1
-    b .brk.544      
+    b .brk.536      
 .switch_0_7:
     movs r0, #3
     ldr r7, [r6, #0]
-    str r0, [r7, #28]
+    str r0, [r7, #20]
     @stackempty locals
-    b .brk.544      
+    b .brk.536      
 .switch_1_7:
     movs r0, #7
     ldr r7, [r6, #0]
-    str r0, [r7, #28]
+    str r0, [r7, #20]
     @stackempty locals
-    b .brk.544      
+    b .brk.536      
 .switch_2_7:
     movs r0, #5
     ldr r7, [r6, #0]
-    str r0, [r7, #28]
+    str r0, [r7, #20]
     @stackempty locals
-.brk.544:
+.brk.536:
     ldr r7, [r6, #0]
     ldr r0, [r7, #24]
     push {r0} ; proc-arg
