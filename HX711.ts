@@ -6,8 +6,8 @@
 
 //% block="HX711" weight=100 color=#ff8f3f icon="\uf043"
 namespace HX711 {
-    let PD_SCK = DigitalPin.P7;
-    let DOUT = DigitalPin.P6;
+    let PD_SCK = DigitalPin.P0;
+    let DOUT = DigitalPin.P8;
     let GAIN: number = 0.0;
     let OFFSET: number = 0;	// used for tare weight
     let SCALE: number = 1;	// used to return weight in grams, kg, ounces, whatever
@@ -204,7 +204,7 @@ namespace HX711 {
 
     //% blockId="HX711_GET_UNITS" block="get N average reading units %times"
     //% weight=80 blockGap=8
-    export function get_units(times: number): string {
+    export function get_units(times: number): number {
         let valor: number = 0
         
         valor = get_value(times) / SCALE
