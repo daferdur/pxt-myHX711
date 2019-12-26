@@ -65,12 +65,12 @@ namespace HX711 {
         read()
     }
 
-    export function shiftInSlow(dataPin: number, clockPin: number, bitOrder: number): number {
+    export function shiftInSlow(bitOrder: number): number {
         let value: number = 0
         let i: number
 
         for (i = 0; i < 8; ++i) {
-            pins.digitalWritePin(clockPin, 1)
+            pins.digitalWritePin(PD_SCK, 1)
             control.waitMicros(1)
             if (bitOrder == 0)
                 value |= pins.digitalReadPin(DOUT) << i;
@@ -79,7 +79,7 @@ namespace HX711 {
                 value |= pins.digitalReadPin(DOUT) << (7 - i);
             //value = value + (pins.digitalReadPin(DOUT) * 2 ^ (7 - i))
             //value = value | (pins.digitalReadPin(DOUT) << (7 - i))
-            pins.digitalWritePin(clockPin, 0)
+            pins.digitalWritePin(PD_SCK, 0)
             control.waitMicros(1)
         }
         return value
@@ -119,9 +119,9 @@ namespace HX711 {
         //data[1] = shiftInSlow(DOUT, PD_SCK, MSBFIRST)
         //data[0] = shiftInSlow(DOUT, PD_SCK, MSBFIRST)
 
-        data[2] = shiftInSlow(DOUT, PD_SCK, 1)
-        data[1] = shiftInSlow(DOUT, PD_SCK, 1)
-        data[0] = shiftInSlow(DOUT, PD_SCK, 1)
+        data[2] = shiftInSlow(1)
+        data[1] = shiftInSlow(1)
+        data[0] = shiftInSlow(1)
 
         // Set the channel and the gain factor for the next reading using the clock pin.
         let i: number = 0
@@ -206,9 +206,19 @@ namespace HX711 {
     //% weight=80 blockGap=8
     export function get_units(times: number): number {
         let valor: number = 0
+        let valor_string: string = ""
+        let ceros: string = ""
         
         valor = get_value(times) / SCALE
-        return valor
+         if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 0) {
+            ceros = "00"
+         } else if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 1) {
+            ceros = "0"
+         }
+    valor_string = "" + Math.trunc(valor) + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100))
+
+     
+        return valor_string
     }
 
     //% blockId="HX711_TARE" block="tare %times"
