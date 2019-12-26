@@ -12,7 +12,7 @@
     .startaddr 0x34800
     .hex 708E3B92C615A841C49866C975EE5197 ; magic number
     .hex 52D6246B98920B2D ; hex template hash
-    .hex FB27418CADF50C76 ; program hash
+    .hex 368C604718C0C728 ; program hash
     .short 8   ; num. globals
     .short 0 ; patched with number of 64 bit words resulting from assembly
     .word _pxt_config_data
@@ -62,11 +62,11 @@ _proccall3:
     ldr r7, [r6, #0]
     str r0, [r7, #16]
     @stackempty locals
-    movs r0, #29
+    movs r0, #15
     ldr r7, [r6, #0]
     str r0, [r7, #24]
     @stackempty locals
-    movs r0, #27
+    movs r0, #31
     ldr r7, [r6, #0]
     str r0, [r7, #20]
     @stackempty locals
