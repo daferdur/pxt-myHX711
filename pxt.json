@@ -1,6 +1,6 @@
 {
     "name": "pxt-HX711",
-    "version": "0.0.7",
+    "version": "1.0.10",
     "description": "",
     "dependencies": {
         "core": "*"
