@@ -206,18 +206,18 @@ namespace HX711 {
     //% weight=80 blockGap=8
     export function get_units(times: number): number {
         let valor: number = 0
-        let valor_string: string = ""
-        let ceros: string = ""
+        //let valor_string: string = ""
+        //let ceros: string = ""
         
         valor = get_value(times) / SCALE
-         if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 0) {
+        /* if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 0) {
             ceros = "00"
          } else if (Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString().length == 1) {
             ceros = "0"
          }
     valor_string = "" + Math.trunc(valor).toString() + "." + ceros + Math.abs(Math.round((valor - Math.trunc(valor)) * 100)).toString()
-     
-        return valor_string
+     */
+        return valor
     }
 
     //% blockId="HX711_TARE" block="tare %times"
