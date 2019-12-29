@@ -48,11 +48,12 @@ if (wait_ready_timeout(1000)) {
 ```
 
 ## Features
-1. It provides a `tare()` function, which "resets" the scale to 0. Many other
+1. It provides a `tare(N)` function, which "resets" the scale to 0. Many other
    implementations calculate the tare weight when the ADC is initialized only.
    I needed a way to be able to set the tare weight at any time.
-   **Use case**: Place an empty container on the scale, call `tare()` to reset
+   **Use case**: Place an empty container on the scale, call `tare(N)` to reset
    the readings to 0, fill the container and get the weight of the content.
+   N could be 10 for example, which will average the tare set.
 
 2. It provides a `power_down()` function, to put the ADC into a low power mode.
    According to the datasheet,
@@ -81,11 +82,11 @@ if (wait_ready_timeout(1000)) {
 
 
 ## How to calibrate your load cell
-1. Call `set_scale()` with no parameter.
-2. Call `tare()` with no parameter.
+1. Call `set_scale(Cell Full Scale)`, for example, for a 2kg cell, start with 2000.
+2. Call `tare(10)` to tare it with 10 readings.
 3. Place a known weight on the scale and call `get_units(10)`.
 4. Divide the result in step 3 to your known weight. You should
-   get about the parameter you need to pass to `set_scale()`.
+   get about the parameter you need to pass to `set_scale(XX)`.
 5. Adjust the parameter in step 4 until you get an accurate reading.
 
 
@@ -230,6 +231,6 @@ MIT
 
 ## TO DO
 
-* It hasn't been tested yet.
-Any errors, please report. Thanks.
+* It has been tested.
+But at any errors, please report. Thanks.
 
