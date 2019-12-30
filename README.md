@@ -220,6 +220,13 @@ Load cells use a four wire wheatstone bridge to connect to the HX711. These are 
 
 If you invert White & Green wires you'll get reading with negative sign.
 
+![](weight_load_cell_microbit_connections.jpg)
+
+## HOW TO MOUNT - EXAMPLE
+
+You can follow this example to make an implementation o a weighing machine.
+![](gauge_mounting.jpg)
+
 ## License
 
 MIT
