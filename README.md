@@ -24,19 +24,19 @@ The library myHX711 provides this set of functions to allow you to measure weigh
 
 ![](HX711_set_DOUT.jpg)
 
-This block function sets de pin for DOUT, i.e. Data.
+This block function sets de pin for DOUT, i.e. Data Pin.
 
 ## HX711 set PD_SCK
 
 ![](HX711_set_PD_SCK.jpg)
 
-This block function sets de pin for SCK, i.e. Clock.
+This block function sets de pin for SCK, i.e. Clock Pin.
 
 ## begin
 
 ![](begin.jpg)
 
-This block function sets module to begin readings. Needed "on start" block.
+This block function sets module to begin readings. Needed in the "on start" block.
 
 ## Power Up
 
@@ -96,7 +96,7 @@ This block function tares to zero with "N" readings, applying an offset to set t
 
 ![](get_N_average_value.jpg)
 
-This block function gets the final value of weight without applyin the configured scale, only applies offset. N parameter must be higher than 1. The returnef result will be N averaged.
+This block function gets the final value of weight without applyin the configured scale, only applies offset. N parameter must be higher than 1. The returned result will be N averaged.
 
 ## get N average reading units
 
