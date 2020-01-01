@@ -121,7 +121,7 @@ set_offset = 50682624;
 
 // 3. Acquire reading
 Serial print("Weight: ");
-Serial print line(get_units(10));
+Serial print line(get_N_average_reading_units(10));
 
 ```
 
@@ -155,7 +155,7 @@ Serial print line(get_units(10));
 
    This function is also called from the initializer method `begin()`.
 
-4. The `get_value()` and `get_units()` functions can receive an extra parameter "times",
+4. The `get_N_average_value()` and `get_N_average_reading_units()` functions can receive an extra parameter "times",
    and they will return the average of multiple readings instead of a single reading.
 
 
