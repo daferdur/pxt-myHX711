@@ -16,6 +16,10 @@ To import this extension, go to Advanced -> +Extension and enter "myHX711" in th
 
 ## Synopsis
 
+The library myHX711 provides this set of functions to allow you to measure weight.
+![](HX711_functions.jpeg)
+
+
 ### Blocking mode
 The library is usually used in blocking mode, i.e. it will wait for the
 hardware becoming available before returning a reading.
@@ -25,27 +29,13 @@ Select DOUT_PIN;
 Select SCK_PIN;
 
 // 2. Adjustment settings and Initialization of the library
-begin;
+begin();
 setscale = 5895655;
 set_offset = 50682624;
 
 // 3. Acquire reading
 Serial print("Weight: ");
 Serial print line(get_units(10));
-
-### Non-blocking mode
-It is also possible to define a maximum timeout to wait for the hardware
-to be initialized. This won't send the program into a spinlock when the
-scale is disconnected and will probably also account for hardware failures.
-```
-// 3. Acquire reading without blocking
-if (wait_ready_timeout(1000)) {
-    Serial print("Weight: ");
-    Serial print line(get_units(10));
-} else {
-    Serial printline("HX711 not found.");
-}
-```
 
 ## Features
 1. It provides a `tare(N)` function, which "resets" the scale to 0. Many other
