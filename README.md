@@ -48,7 +48,7 @@ This block function awakes HX711 module to be prepared for readings.
 
 ![](power_down.jpg)
 
-This block function sleeps HX711 module to be prepared for readings.
+This block function sleeps HX711 module for low power consumption.
 
 ## Read
 
@@ -96,12 +96,13 @@ This block function tares to zero with "N" readings, applying an offset to set t
 
 ![](get_N_average_value.jpg)
 
+This block function gets the final value of weight without applyin the configured scale, only applies offset. N parameter must be higher than 1. The returnef result will be N averaged.
 
 ## get N average reading units
 
 ![](get_N_average_reading_units.jpg)
 
-This block function gets the final value of the weight applying the configured scale and offset. N parameter mus be higher than 1. The returned result will be N averaged.
+This block function gets the final value of the weight applying the configured scale and offset. N parameter must be higher than 1. The returned result will be N averaged.
 
 
 ### Blocking mode
@@ -115,7 +116,7 @@ Select SCK_PIN;
 
 // 2. Adjustment settings and Initialization of the library
 begin();
-setscale = 5895655;
+setscale = 2000;
 set_offset = 50682624;
 
 // 3. Acquire reading
