@@ -162,11 +162,13 @@ Serial print line(get_units(10));
 ## How to calibrate your load cell
 1. Call `set_scale(Cell Full Scale)`, for example, for a 2kg cell, start with 2000.
 2. Call `tare(10)` to tare it with 10 readings.
-3. Place a known weight on the scale and call `get_units(10)`.
+3. Place a known weight on the scale and call `get_N_average_reading_units(10)`.
 4. Divide the result in step 3 to your known weight. You should
    get about the parameter you need to pass to `set_scale(XX)`.
 5. Adjust the parameter in step 4 until you get an accurate reading.
 
+
+For example, if you put a weight of 100g and you get a reading of 104g, you should do 104/100 and multiply the result by scale to set again the scale as commented above.
 
 ## Credits
 Thanks to Weihong Guan who started the first version of this library in 2012
