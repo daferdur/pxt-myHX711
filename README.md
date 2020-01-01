@@ -17,6 +17,7 @@ To import this extension, go to Advanced -> +Extension and enter "myHX711" in th
 ## Synopsis
 
 The library myHX711 provides this set of functions to allow you to measure weight.
+
 ![](HX711_functions.jpeg)
 
 
