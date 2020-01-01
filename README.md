@@ -20,11 +20,95 @@ The library myHX711 provides this set of functions to allow you to measure weigh
 
 ![](HX711_functions.jpeg)
 
+## HX711 set DOUT
+
+![](HX711_set_DOUT.jpg)
+
+This block function sets de pin for DOUT, i.e. Data.
+
+## HX711 set PD_SCK
+
+![](HX711_set_PD_SCK.jpg)
+
+This block function sets de pin for SCK, i.e. Clock.
+
+## begin
+
+![](begin.jpg)
+
+This block function sets module to begin readings. Needed "on start" block.
+
+## Power Up
+
+![](power_up.jpg)
+
+This block function awakes HX711 module to be prepared for readings.
+
+## Power Down
+
+![](power_down.jpg)
+
+This block function sleeps HX711 module to be prepared for readings.
+
+## Read
+
+![](read.jpg)
+
+This block function makes a reading in an integer way without any taring or offset in the readings.
+
+## Read Average
+
+![](read_average.jpg)
+
+This block function makes "N" readings in an integer way without any taring or offset in the readings and performs an N averaging.
+
+## Get Offset
+
+![](get_offset.jpg)
+
+This block function gets the configured offset.
+
+## Get Scale
+
+![](get_scale.jpg)
+
+This block function gets the configured scale. Scale is the maximum weight that can be measured, and depends on the cell used.
+
+## Set Offset
+
+![](set_offset.jpg)
+
+This block function sets the configured offset to apply to the readings.
+
+## Set Scale
+
+![](set_scale.jpg)
+
+This block function sets the configured scale. Scale is the maximum weight that can be measured, and depends on the cell used.
+
+## Tare
+
+![](tare.jpg)
+
+This block function tares to zero with "N" readings, applying an offset to set the zero. "tare(N)" has an input parameter that cannot be zero. Al least should be 1 for one reading. We recomend a value of 10.
+
+## get N average value
+
+![](get_N_average_value.jpg)
+
+
+## get N average reading units
+
+![](get_N_average_reading_units.jpg)
+
+This block function gets the final value of the weight applying the configured scale and offset. N parameter mus be higher than 1. The returned result will be N averaged.
+
 
 ### Blocking mode
 The library is usually used in blocking mode, i.e. it will wait for the
 hardware becoming available before returning a reading.
 
+```
 // 1. HX711 circuit wiring
 Select DOUT_PIN;
 Select SCK_PIN;
@@ -37,6 +121,8 @@ set_offset = 50682624;
 // 3. Acquire reading
 Serial print("Weight: ");
 Serial print line(get_units(10));
+
+```
 
 ## Features
 1. It provides a `tare(N)` function, which "resets" the scale to 0. Many other
@@ -95,30 +181,6 @@ library over the course of the last years.
 ## Blocks
 
 The extension can be used for HX711 modules.
-
-BASIC EXAMPLE (get reading):
-![1](basic_example.jpg)
-
-
-```blocks
-HX711.SetPIN_DOUT(PIN_DOUT.P0)
-HX711.SetPIN_SCK(PIN_PD_SCK.P8)
-HX711.begin()
-serial.redirect(
-    SerialPin.USB_TX,
-    SerialPin.USB_RX,
-    BaudRate.BaudRate9600
-)
-basic.forever(function () {
-    serial.writeString("HX711 reading: ")
-    serial.writeNumber(HX711.get_scale())
-    serial.writeLine("")
-    basic.pause(1000)
-})
-
-
-```
-
 
 FULL EXAMPLE: (almost all commands)
 ![2](full_example.jpg)
