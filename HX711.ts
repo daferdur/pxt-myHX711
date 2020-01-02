@@ -4,7 +4,7 @@
  * MIT License
   */
 
-//% block="HX711" weight=100 color=#ff8f3f icon="\uf043"
+//% block="HX711" weight=100 color=#ff8f3f icon="\uf5cd"
 namespace HX711 {
     let PD_SCK = DigitalPin.P0;
     let DOUT = DigitalPin.P8;
