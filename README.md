@@ -19,85 +19,85 @@ The library myHX711 provides this set of functions to allow you to measure weigh
 
 ## HX711 set DOUT
 
-![](HX711_set_DOUT.jpg)
+||HX711 set DOUT||
 
 This block function sets de pin for DOUT, i.e. Data Pin.
 
 ## HX711 set PD_SCK
 
-![](HX711_set_PD_SCK.jpg)
+||HX711 set PD_SCK||
 
 This block function sets de pin for SCK, i.e. Clock Pin.
 
 ## begin
 
-![](begin.jpg)
+||begin||
 
 This block function sets module to begin readings. Needed in the "on start" block.
 
 ## Power Up
 
-![](power_up.jpg)
+||Power Up||
 
 This block function awakes HX711 module to be prepared for readings.
 
 ## Power Down
 
-![](power_down.jpg)
+||Power Down||
 
 This block function sleeps HX711 module for low power consumption.
 
 ## Read
 
-![](read.jpg)
+||Read||
 
 This block function makes a reading in an integer way without any taring or offset in the readings.
 
 ## Read Average
 
-![](read_average.jpg)
+||Read Average||
 
 This block function makes "N" readings in an integer way without any taring or offset in the readings and performs an N averaging.
 
 ## Get Offset
 
-![](get_offset.jpg)
+||Get Offset||
 
 This block function gets the configured offset.
 
 ## Get Scale
 
-![](get_scale.jpg)
+||Get Scale||
 
 This block function gets the configured scale. Scale is the maximum weight that can be measured, and depends on the cell used.
 
 ## Set Offset
 
-![](set_offset.jpg)
+||Set Offset||
 
 This block function sets the configured offset to apply to the readings.
 
 ## Set Scale
 
-![](set_scale.jpg)
+||Set Scale||
 
 This block function sets the configured scale. Scale is the maximum weight that can be measured, and depends on the cell used.
 
 ## Tare
 
-![](tare.jpg)
+||tare||
 
 This block function tares to zero with "N" readings, applying an offset to set the zero. "tare(N)" has an input parameter that cannot be zero. Al least should be 1 for one reading. We recomend a value of 10.
 
 ## get N average value
 
-![](get_N_average_value.jpg)
+||get N average value||
 
 This block function gets the final value of weight without applyin the configured scale, only applies offset. N parameter must be higher than 1. The returned result will be N averaged.
 
 ## get N average reading units
 
-![](get_N_average_reading_units.jpg)
+||get N average reading units||
 
 This block function gets the final value of the weight applying the configured scale and offset. N parameter must be higher than 1. The returned result will be N averaged.
 
@@ -138,7 +138,7 @@ Serial print line(get_N_average_reading_units(10));
    **Use case**: Battery-powered scales. Accordingly, there is a `power_up()`
    function to get the chip out of the low power mode.
 
-3. It has a `set_gain(byte gain)` function that allows you to set the gain factor
+3. The initializer method `begin()` has a a built-in `set_gain(byte gain)` function that allows you to set the gain factor
    and select the channel. According to the datasheet,
    > Channel A can be programmed with a gain of 128 or 64, corresponding to
    a full-scale differential input voltage of ±20mV or ±40mV respectively, when
@@ -148,9 +148,8 @@ Serial print line(get_N_average_reading_units(10));
    The same function is used to select the channel A or channel B, by passing
    128 or 64 for channel A, or 32 for channel B as the parameter. The default
    value is 128, which means "channel A with a gain factor of 128", so one can
-   simply call `set_gain()`.
-
-   This function is also called from the initializer method `begin()`.
+   simply call `set_gain()`. Don't worry too much about this comment, because the `begin()` method does the work for you.
+   And only uses Channel A for gauge measuring.
 
 4. The `get_N_average_value()` and `get_N_average_reading_units()` functions can receive an extra parameter "times",
    and they will return the average of multiple readings instead of a single reading.
