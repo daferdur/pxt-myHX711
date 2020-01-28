@@ -87,7 +87,7 @@ This block function tares to zero with "N" readings, applying an offset to set t
 
 ||get N average value||
 
-This block function gets the final value of the weight applying the configured scale and offset. The N parameter must be higher than 1. The returned result will be N averaged.
+This block function gets the final value of the weight applying the configured offset only without scale. The N parameter must be higher than 1. The returned result will be N averaged.
 
 ## get N average reading units
 
