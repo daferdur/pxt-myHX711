@@ -284,9 +284,3 @@ MIT
 
 * for PXT/microbit
 (The metadata above is needed for package search.)
-
-## TO DO
-
-* It has been tested.
-But at any errors, please report. Thanks.
-
