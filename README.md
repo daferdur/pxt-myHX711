@@ -1,63 +1,57 @@
 # BBC micro:bit MakeCode editor extension for HX711 connected to weight sensors
 
-[HX711](https://www.mouser.com/datasheet/2/813/hx711_english-1022875.pdf) Based on Avia Semiconductor’s patented technology, HX711 is a precision 24-bit analog-to-digital converter (ADC) designed for weigh scales and industrial control applications to interface directly with a bridge sensor. 
-This is an extension to allow you use HX711 module with Microbit processor board and convert your Microbit in a weighing machine.
+[HX711](https://www.mouser.com/datasheet/2/813/hx711_english-1022875.pdf) Based on Avia Semiconductor’s patented technology, HX711 is a precision 24-bit analog-to-digital converter (ADC) designed for weigh scales and industrial control applications to interface directly with a bridge sensor.
 
-My codes are based on [Arduino sources - 2018 Bogdan Necula](https://github.com/bogde/HX711) Which I've translated from Arduino C to Microbit Makecode (Typescript).
-
-To import this extension, go to Advanced -> +Extension and enter "myHX711" in the search box, or copy/paste [https://github.com/daferdur/pxt-myHX711](https://github.com/daferdur/pxt-myHX711) into the search box. Press enter and click the extension.
-
-![](HX711_module.jpg)
-
-![](HX711_module2.jpg)
+This extension allows you to use an HX711 module with the micro:bit as a weighing machine.
 
 ## Synopsis
 
-The library myHX711 provides this set of functions to allow you to measure weight.
+The library myHX711 provides a set of functions to allow you to measure weight.
 
-![](HX711_functions.jpeg)
+ ![](HX711_functions.jpeg)
+
 
 ## HX711 set DOUT
 
 ||HX711 set DOUT||
 
-This block function sets de pin for DOUT, i.e. Data Pin.
+This block function sets the pin for DOUT, i.e. Data Pin.
 
 ## HX711 set PD_SCK
 
 ||HX711 set PD_SCK||
 
-This block function sets de pin for SCK, i.e. Clock Pin.
+This block function sets the pin for SCK, i.e. Clock Pin.
 
 ## begin
 
 ||begin||
 
-This block function sets module to begin readings. Needed in the "on start" block.
+This block function sets the module to begin readings. Required in the "on start" block.
 
 ## Power Up
 
 ||Power Up||
 
-This block function awakes HX711 module to be prepared for readings.
+This block function awakens the HX711 module to be prepared for readings.
 
 ## Power Down
 
 ||Power Down||
 
-This block function sleeps HX711 module for low power consumption.
+This block function puts the HX711 module to sleep for lower power consumption.
 
 ## Read
 
 ||Read||
 
-This block function makes a reading in an integer way without any taring or offset in the readings.
+This block function reads an integer out without any taring or offset in the reading.
 
 ## Read Average
 
 ||Read Average||
 
-This block function makes "N" readings in an integer way without any taring or offset in the readings and performs an N averaging.
+This block function makes "N" number of integer readings without any taring or offset in the readings and calculates an average.
 
 ## Get Offset
 
@@ -87,13 +81,13 @@ This block function sets the configured scale. Scale is the maximum weight that 
 
 ||tare||
 
-This block function tares to zero with "N" readings, applying an offset to set the zero. "tare(N)" has an input parameter that cannot be zero. Al least should be 1 for one reading. We recomend a value of 10.
+This block function tares to zero with "N" readings, applying an offset to set the zero. "tare(N)" has an input parameter that cannot be zero. It should at least should be 1 for one reading. We recomend a value of 10.
 
 ## get N average value
 
 ||get N average value||
 
-This block function gets the final value of weight without applyin the configured scale, only applies offset. N parameter must be higher than 1. The returned result will be N averaged.
+This block function gets the final value of the weight applying the configured scale and offset. The N parameter must be higher than 1. The returned result will be N averaged.
 
 ## get N average reading units
 
@@ -104,7 +98,7 @@ This block function gets the final value of the weight applying the configured s
 
 ### Blocking mode
 The library is usually used in blocking mode, i.e. it will wait for the
-hardware becoming available before returning a reading.
+hardware to become available before returning a reading.
 
 ```
 // 1. HX711 circuit wiring
@@ -125,10 +119,11 @@ Serial print line(get_N_average_reading_units(10));
 ## Features
 1. It provides a `tare(N)` function, which "resets" the scale to 0. Many other
    implementations calculate the tare weight when the ADC is initialized only.
-   I needed a way to be able to set the tare weight at any time.
-   **Use case**: Place an empty container on the scale, call `tare(N)` to reset
-   the readings to 0, fill the container and get the weight of the content.
-   N could be 10 for example, which will average the tare set.
+   we should have a way to be able to set the tare weight at any time.
+
+    **Use case**: Place an empty container on the scale, call `tare(N)` to reset
+    the readings to 0, fill the container and get the weight of the content.
+    N could be 10 for example, which will average the tare set.
 
 2. It provides a `power_down()` function, to put the ADC into a low power mode.
    According to the datasheet,
@@ -174,7 +169,7 @@ who took over in 2014 and last but not least all others who contributed to this
 library over the course of the last years.
 
 #### See also
-- https://github.com/bogde/HX711
+My codes are based on [Arduino sources - 2018 Bogdan Necula](https://github.com/bogde/HX711) Which I've translated from Arduino C to Microbit Makecode (Typescript).
 
 
 ## Blocks
@@ -286,9 +281,4 @@ MIT
 
 * for PXT/microbit
 (The metadata above is needed for package search.)
-
-## TO DO
-
-* It has been tested.
-But at any errors, please report. Thanks.
 
