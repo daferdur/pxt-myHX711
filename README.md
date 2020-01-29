@@ -270,7 +270,7 @@ If you invert White & Green wires you'll get reading with negative sign.
 
 ## HOW TO MOUNT - EXAMPLE
 
-You can follow this example to make an implementation o a weighing machine.
+You can follow this example to make an implementation of a weighing machine.
 ![](gauge_mounting.jpg)
 
 ## License
