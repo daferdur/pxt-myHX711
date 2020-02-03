@@ -102,8 +102,8 @@ hardware to become available before returning a reading.
 
 ```
 // 1. HX711 circuit wiring
-Select DOUT_PIN;
-Select SCK_PIN;
+Select Data Pin;
+Select Clock Pin;
 
 // 2. Adjustment settings and Initialization of the library
 begin();
@@ -112,7 +112,7 @@ set_offset = 50682624;
 
 // 3. Acquire reading
 Serial print("Weight: ");
-Serial print line(get_N_average_reading_units(10));
+Serial print line(get N averaged final scaled value(10));
 
 ```
 
@@ -146,8 +146,8 @@ Serial print line(get_N_average_reading_units(10));
    simply call `set_gain()`. Don't worry too much about this comment, because the `begin()` method does the work for you.
    And only uses Channel A for gauge measuring.
 
-4. The `get_N_average_value()` and `get_N_average_reading_units()` functions can receive an extra parameter "times",
-   and they will return the average of multiple readings instead of a single reading.
+4. The `read N averaged raw data`, `get N averaged offsetted data()` and `get N averaged final scaled value(10)` functions must receive an extra parameter "times",
+   and they will return the N times average of multiple readings instead of a single reading.
 
 
 ## How to calibrate your load cell
