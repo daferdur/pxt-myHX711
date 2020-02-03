@@ -11,17 +11,17 @@ The library myHX711 provides a set of functions to allow you to measure weight.
  ![](HX711_functions.jpeg)
 
 
-## HX711 set DOUT
+## HX711 set DataPin
 
-||HX711 set DOUT||
+||HX711 set DataPin||
 
-This block function sets the pin for DOUT, i.e. Data Pin.
+This block function sets the pin where data comes in, i.e. Data Pin.
 
-## HX711 set PD_SCK
+## HX711 set ClockPin
 
-||HX711 set PD_SCK||
+||HX711 set ClockPin||
 
-This block function sets the pin for SCK, i.e. Clock Pin.
+This block function sets the clock pin for getting data from HX711 module, i.e. Clock Pin.
 
 ## begin
 
