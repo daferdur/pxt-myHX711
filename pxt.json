@@ -7,6 +7,9 @@
     },
     "files": [
         "README.md",
+        "HX711_functions.jpeg",
+        "weight_load_cell_microbit_connections.jpg",
+        "gauge_mounting.jpg",
         "HX711.ts"
     ],
     "testFiles": [

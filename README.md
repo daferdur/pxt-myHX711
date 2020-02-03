@@ -47,11 +47,11 @@ This block function puts the HX711 module to sleep for lower power consumption.
 
 This block function reads an integer out without any taring or offset in the reading.
 
-## Read Average
+## read N averaged raw data
 
-||Read Average||
+||read N averaged raw data||
 
-This block function makes "N" number of integer readings without any taring or offset in the readings and calculates an average.
+This block function makes "N" number of integer readings without any taring or offset neither scaling in the readings and calculates an average.
 
 ## Get Offset
 
@@ -83,15 +83,15 @@ This block function sets the configured scale. Scale is the maximum weight that 
 
 This block function tares to zero with "N" readings, applying an offset to set the zero. "tare(N)" has an input parameter that cannot be zero. It should at least should be 1 for one reading. We recomend a value of 10.
 
-## get N average value
+## get N averaged offsetted data
 
-||get N average value||
+||get N averaged offsetted data||
 
-This block function gets the final value of the weight applying the configured offset only without scale. The N parameter must be higher than 1. The returned result will be N averaged.
+This block function gets the final value of the weight applying the configured offset only but without scale. The N parameter must be higher than 1. The returned result will be N averaged.
 
-## get N average reading units
+## get N averaged final scaled value
 
-||get N average reading units||
+||get N averaged final scaled value||
 
 This block function gets the final value of the weight applying the configured scale and offset. N parameter must be higher than 1. The returned result will be N averaged.
 

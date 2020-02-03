@@ -22,7 +22,7 @@ namespace HX711 {
      * @param pinDOUT pin at which the HX data line is connected
      */
 
-    //% blockId="SET_DOUT" block="HX711 set DOUT %pinDOUT"
+    //% blockId="SET_DOUT" block="HX711 set DataPin %pinDOUT"
     //% weight=100 blockGap=8
     export function SetPIN_DOUT(pinDOUT: DigitalPin): void {
         DOUT = pinDOUT;
@@ -32,7 +32,7 @@ namespace HX711 {
      * Set pin at which the SCK line is connected
      * @param pinPD_SCK pin at which the HX data line is connected
      */
-    //% blockId="SET_SCK" block="HX711 set PD_SCK %pinPD_SCK"
+    //% blockId="SET_SCK" block="HX711 set ClockPin %pinPD_SCK"
     //% weight=100 blockGap=8
     export function SetPIN_SCK(pinPD_SCK: DigitalPin): void {
         PD_SCK = pinPD_SCK;
@@ -184,7 +184,7 @@ namespace HX711 {
         return false
     }
 
-    //% blockId="HX711_READ_AVERAGE" block="read average %times"
+    //% blockId="HX711_READ_AVERAGE" block="read N averaged raw data %times"
     //% weight=80 blockGap=8
     export function read_average(times: number): number {
         let sum: number = 0
@@ -196,13 +196,13 @@ namespace HX711 {
         return sum / times
     }
 
-    //% blockId="HX711_GET_VALUE" block="get N average value %times"
+    //% blockId="HX711_GET_VALUE" block="get N averaged offsetted data %times"
     //% weight=80 blockGap=8
     export function get_value(times: number): number {
         return read_average(times) - OFFSET
     }
 
-    //% blockId="HX711_GET_UNITS" block="get N average reading units %times"
+    //% blockId="HX711_GET_UNITS" block="get N averaged final scaled value %times"
     //% weight=80 blockGap=8
     export function get_units(times: number): number {
         let valor: number = 0
